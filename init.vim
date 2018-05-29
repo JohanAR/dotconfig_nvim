@@ -13,6 +13,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'itchyny/lightline.vim'
   Plug 'mgee/lightline-bufferline'
   "Plug 'ap/vim-buftabline'
+  Plug 'justinmk/vim-dirvish'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   "Plug 'junegunn/fzf.vim'   also necessary?
 
@@ -36,7 +37,11 @@ set hidden
 set wildmenu
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png,*.ico
 set wildignore+=*.pdf,*.psd
-let g:netrw_bufsettings = 'noma nomod nu rel nobl nowrap ro nornu'
+
+" Disable netrw to use dirvish instead
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+"let g:netrw_bufsettings = 'noma nomod nu rel nobl nowrap ro nornu'
 
 " Indentation
 set autoindent
@@ -45,6 +50,8 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 
+set list
+set listchars=tab:›·,trail:⚘,extends:❯,precedes:❮,conceal:C,nbsp:%
 
 " Lightline and lightline-bufferline
 let g:lightline#bufferline#show_number  = 2
@@ -77,6 +84,7 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 nnoremap <C-K> :bnext<CR>
 nnoremap <C-J> :bprev<CR>
+nnoremap <C-X> :bprev<CR>:bdelete#<CR>
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
 nmap <Leader>3 <Plug>lightline#bufferline#go(3)
