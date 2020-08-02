@@ -1,9 +1,10 @@
 set nocompatible
+set nomodeline
 filetype plugin on
 let mapleader = " "
 
 
-" vim-plug
+" vim-plug, call :PlugUpdate
 call plug#begin('~/.local/share/nvim/plugged')
 
   "Plug 'chriskempson/vim-tomorrow-theme'
@@ -14,6 +15,7 @@ call plug#begin('~/.local/share/nvim/plugged')
   Plug 'mgee/lightline-bufferline'
   "Plug 'ap/vim-buftabline'
   Plug 'justinmk/vim-dirvish'
+  Plug 'tikhomirov/vim-glsl'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   "Plug 'junegunn/fzf.vim'   also necessary?
 
@@ -85,6 +87,7 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 nnoremap <C-K> :bnext<CR>
 nnoremap <C-J> :bprev<CR>
 nnoremap <C-X> :bprev<CR>:bdelete#<CR>
+nnoremap <Leader>e :FZF<CR>
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
 nmap <Leader>3 <Plug>lightline#bufferline#go(3)
